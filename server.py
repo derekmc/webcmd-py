@@ -1,7 +1,7 @@
 import cherrypy, string, random
 
 ADMINPASSWORD_FILE = "adminpassword.txt"
-ADMINPASSWORD_LEN = 12
+ADMINPASSWORD_LEN = 16
 class Root(object):
     @cherrypy.expose
     def index(self):
@@ -28,4 +28,4 @@ def validate_password(realm, username, password):
     return False
 
 if __name__ == '__main__':
-   cherrypy.quickstart(Root(), '/', 'myapp.conf')
+   cherrypy.quickstart(Root(), '/', 'server.conf')
