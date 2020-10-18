@@ -1,11 +1,17 @@
-import cherrypy, string, random
+import os, random, string, cherrypy
+import CherrypyMako
+
+CherrypyMako.setup()
+
+root_dir = os.path.abspath( os.path.dirname(__file__))
 
 ADMINPASSWORD_FILE = "adminpassword.txt"
 ADMINPASSWORD_LEN = 16
 class Root(object):
     @cherrypy.expose
+    @cherrypy.tools.mako(filename="index.html")
     def index(self):
-        return "Hello World!"
+        return {"name": "Billy Bob Thornton"}
 
 def gen_password(passlen):
     letters = string.ascii_lowercase
