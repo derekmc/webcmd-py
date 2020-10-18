@@ -13,6 +13,11 @@ class Root(object):
     def index(self):
         return {"name": "Billy Bob Thornton"}
 
+    @cherrypy.expose
+    @cherrypy.tools.mako(filename="admin/index.html")
+    def admin(self, name="admin"):
+        return {"name": name}
+
 def gen_password(passlen):
     letters = string.ascii_lowercase
     return ''.join(random.choice(letters) for i in range(passlen))
