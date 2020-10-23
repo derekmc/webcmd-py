@@ -3,4 +3,34 @@
 #console_out{
   font-family: monospace;
   white-space: pre;
+  border: 2px solid #ccc;
+  border-left: 3px solid black;
+  border-right: 4px solid #f4f4f4;
+  padding: 3px 7px;
+  display: inline-block;
+  min-width: 420px;
+  min-height: 75px;
+  margin-bottom: 8px;
+  background: #fff;
+}
+#command_input{
+  font-size: 112%;
+  margin: 2px 0px 2px 0px;
+  border: none;
+  border: 2px solid #ccc;
+  border-left: 3px solid black;
+  border-right: 4px solid #f2f2f2;
+  outline: none;
+  padding: 3px 7px;
+  font-family: monospace;
+  margin-bottom: 8px;
+}
+button{
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 3px 7px;
+}
+body{
+  background: #fff;
 }

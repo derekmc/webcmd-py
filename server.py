@@ -16,7 +16,14 @@ class Root(object):
     @cherrypy.expose
     @cherrypy.tools.mako(filename="console.html")
     def console(self):
-        return {"output": "  Output Goes Here..."}
+        return {"output":
+            'Here, have some green beans! <img src="./static/greenbeans.jpg" style="vertical-align: top" height="80px"></img>\n' +
+            'Here, have some green beans! <img src="./static/greenbeans.jpg" style="vertical-align: top" height="80px"></img>\n' +
+            'Here, have some green beans! ' +
+            'Here, have some green beans! ' +
+            'Here, have some green beans! ' +
+            'Here, have some green beans! <img src="./static/greenbeans.jpg" style="vertical-align: top" height="80px"></img>\n'
+        }
 
     @cherrypy.expose
     @cherrypy.tools.mako(filename="admin/index.html")

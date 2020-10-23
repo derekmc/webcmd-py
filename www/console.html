@@ -6,15 +6,16 @@
     <link rel="stylesheet" href="./static/console.css"/>
   </head>
   <h1> Web Command Console </h1>
-  <hr>
-  <div id="console_out">
-${output}
-  </div>
-  <hr>
+  <div id="console_out">${output}</div>
+  <br>
   <form>
-    <input type="text" size="40" title="Try: 'help'"
+    <input id="command_input"
+           type="text" size="40" title="Try: 'help'"
            placeholder="Enter Command"></input>
+    <br>
     <button> Run</button>
     <button> Clear</button>
   </form>
+  <br>
+  <a href=".">Home </a>
 </html>
