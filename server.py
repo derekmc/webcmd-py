@@ -14,6 +14,11 @@ class Root(object):
         return {"name": "Billy Bob Thornton"}
 
     @cherrypy.expose
+    @cherrypy.tools.mako(filename="console.html")
+    def console(self):
+        return {"output": "  Output Goes Here..."}
+
+    @cherrypy.expose
     @cherrypy.tools.mako(filename="admin/index.html")
     def admin(self, name="admin"):
         return {"name": name}

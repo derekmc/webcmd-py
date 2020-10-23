@@ -1,9 +1,22 @@
 <!doctype html>
 <html>
   <head>
-    <title>Test Index</title>
+    <title>Web Command Home</title>
+    <link rel="stylesheet" href="./static/main.css"/>
   </head>
-  <h1> Test Index </h1>
-  <p> 2^100 = ${2**100}</p>
-  <p> Name: ${name}</p>
+  <h1> Web Command Home</h1>
+  <hr>
+  <h3> Active Pages</h3>
+  <ul>
+    <li><a href="./admin">Admin</a> </li>
+    <li><a href="./console">Console</a> </li>
+  </ul>
+  <h3> Docs </h3>
+  <ul>
+    <li><a href="./static/docs/console.html">Console</a> </li>
+    <li><a href="./static/docs/cookiejar.html">Cookie Jar</a> </li>
+  </ul>
+  <hr>
+  <% import datetime %>
+  ${datetime.datetime.now().strftime("%b %d, %Y. %I:%M:%S %p.")}
 </html>
