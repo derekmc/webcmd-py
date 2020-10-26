@@ -15,8 +15,32 @@
   <h3>Semi-Distributed </h3>
   <p>
     Cookie Jar uses a centrally hosted server/service provider, but has a decentralized backup protocol.
-    A community can decide on how they will audit the central service provider or replace them
+    A community can audit the central service provider(by confirming backup records) or replace them
     if they go down or are compromised.
+  </p>
+  <h3> Anonymized Backups </h3>
+  <p>
+    Backups are anonymized using hashes.  User accounts are split into distinct records, for each currency type,
+    and even individual account balances are split into separate records to obfuscate balances.  Records are split
+    probabilistically to conform to Benford's law, or some other similar pattern to reduce "chain analysis."
+    Existing records may be randomly split to keep a stable amount of "churn" to similarly reduce possible
+    analysis.  The following is a preliminary scheme to help anonymize this backup information.
+  </p>
+  <pre style="font-family: monospace;">
+Example Account Backup:
+  Account Balance: 1,234,567 Green Beans
+
+  Hashes:
+    User Site Hash: hash(originating_site_id + user_root_cookie)
+    User Backup Hash: hash(backup_version + user_site_hash) // used to claim account
+    Record Hash: hash(user_backup_hash + record_id)
+
+  Records:
+    Record (id=1, hash=KZRD):    22,691 Green Beans
+    Record (id=2, hash=TEVJ):   264,393 Green Beans
+    Record (id=3, hash=XSTD):   931,772 Green Beans
+    Record (id=4, hash=ZDEP):    15,711 Green Beans
+</pre>
   </p>
   <hr>
   <a href="../../">Home </a>
