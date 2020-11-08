@@ -7,15 +7,19 @@ root_dir = os.path.abspath( os.path.dirname(__file__))
 
 ADMINPASSWORD_FILE = "adminpassword.txt"
 ADMINPASSWORD_LEN = 16
+
 class Root(object):
     @cherrypy.expose
     @cherrypy.tools.mako(filename="index.html")
     def index(self):
         return {"name": "Billy Bob Thornton"}
 
+
     @cherrypy.expose
     @cherrypy.tools.mako(filename="console.html")
-    def console(self):
+    def console(self, **params):
+        print("command: ", params.get("command_input"))
+        print("params: ", params);
         return {"output":
             'Here, have some green beans! <img src="./static/greenbeans.jpg" style="vertical-align: top" height="80px"></img>\n' +
             'Here, have some green beans! <img src="./static/greenbeans.jpg" style="vertical-align: top" height="80px"></img>\n' +
@@ -29,6 +33,8 @@ class Root(object):
     @cherrypy.tools.mako(filename="admin/index.html")
     def admin(self, name="admin"):
         return {"name": name}
+
+
 
 def gen_password(passlen):
     letters = string.ascii_lowercase

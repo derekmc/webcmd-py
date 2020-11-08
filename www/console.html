@@ -8,12 +8,12 @@
   <h1> Web Command Console </h1>
   <div id="console_out">${output}</div>
   <br>
-  <form>
-    <input id="command_input"
+  <form method="POST">
+    <input id="command_input" name="command_input"
            type="text" size="40" title="Try: 'help'"
            placeholder="Enter Command"></input>
     <br>
-    <button> Run</button>
+    <input type="submit" value="Run"></input>
     <button> Clear</button>
   </form>
   <br>
