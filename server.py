@@ -8,6 +8,18 @@ root_dir = os.path.abspath( os.path.dirname(__file__))
 ADMINPASSWORD_FILE = "adminpassword.txt"
 ADMINPASSWORD_LEN = 16
 
+class CommandHelper:
+    def __init__(self):
+        self.output = ""
+        self.user = {} # user state
+        self.app = {} # app state
+        self.config = {} # config state
+
+    def puts(self, s):
+        if len(self.output) > 0:
+            self.output += "\n"
+        self.output += s
+
 class Root(object):
     @cherrypy.expose
     @cherrypy.tools.mako(filename="index.html")
@@ -18,16 +30,25 @@ class Root(object):
     @cherrypy.expose
     @cherrypy.tools.mako(filename="console.html")
     def console(self, **params):
-        print("command: ", params.get("command_input"))
-        print("params: ", params);
-        return {"output":
-            'Here, have some green beans! <img src="./static/greenbeans.jpg" style="vertical-align: top" height="80px"></img>\n' +
-            'Here, have some green beans! <img src="./static/greenbeans.jpg" style="vertical-align: top" height="80px"></img>\n' +
-            'Here, have some green beans! ' +
-            'Here, have some green beans! ' +
-            'Here, have some green beans! ' +
-            'Here, have some green beans! <img src="./static/greenbeans.jpg" style="vertical-align: top" height="80px"></img>\n'
-        }
+        command_text = params.get("command_input")
+        cmdhelper = CommandHelper()
+        if command_text != None:
+            args = command_text.split()
+                
+            name = args[0]
+            #print('name', name)
+            module = None
+            try:
+                module = __import__("cmd." + name, fromlist=[None])
+            except:
+                cmdhelper.output = "No such command: '" + name + "'"
+            #print('module', module)
+            if module:
+                if module.run:
+                    module.run(args, cmdhelper)
+                else:
+                    raise "Module has no 'run' command"
+        return {"output": cmdhelper.output}
 
     @cherrypy.expose
     @cherrypy.tools.mako(filename="admin/index.html")

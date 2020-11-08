@@ -1,9 +1,12 @@
 <!doctype html>
 <html>
   <head>
-    <title>Test Index</title>
+    <title>Web Command</title>
     <link rel="stylesheet" href="./static/main.css"/>
     <link rel="stylesheet" href="./static/console.css"/>
+    <script>
+      window.addEventListener("load", ()=> window.scrollTo(0, document.body.scrollHeight));
+    </script>
   </head>
   <h1> Web Command Console </h1>
   <div id="console_out">${output}</div>
@@ -21,4 +24,5 @@
   <hr>
   <% import datetime %>
   ${datetime.datetime.now().strftime("%b %d, %Y. %I:%M:%S %p")}
+  <br><br><br><br><br><br><br><br><br><br>
 </html>
